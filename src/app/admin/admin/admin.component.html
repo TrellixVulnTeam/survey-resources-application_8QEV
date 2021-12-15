@@ -1,0 +1,109 @@
+<div class="dashboard-cards" fxLayout="row" fxLayoutAlign="space-evenly center">
+  <!-- User Admin here -->
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>User Management</mat-card-title>
+      <mat-card-subtitle>Users & Roles</mat-card-subtitle>
+    </mat-card-header>
+    <div class="circular--landscape">
+      <img mat-card-image src="assets/users.png" alt="Graphic of people" />
+    </div>
+    <mat-card-content>
+      <p>Administrators can view, invite and modify user roles for the application.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <a mat-list-item routerLink="/admin/users" routerLinkActive="active">
+          <span class="material-icons"> people </span>
+          <span translate>MANAGE USERS</span>
+        </a>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Document Admin here -->
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Document Management</mat-card-title>
+      <mat-card-subtitle>Classify blob files, photos etc.</mat-card-subtitle>
+    </mat-card-header>
+    <div class="circular--landscape">
+      <img mat-card-image src="assets/document-classification.jpg" alt="Graphic of books" />
+    </div>
+    <mat-card-content>
+      <p>
+        Define document classes and acceptable file types for uploading to support programmatic file naming as well as
+        file sorting and filtering capabilities.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <a mat-list-item routerLink="/admin/documents" routerLinkActive="active">
+          <span class="material-icons"> files </span>
+          <span translate>MANAGE DOCUMENTS</span>
+        </a>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Email Admin here -->
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Email Management</mat-card-title>
+      <mat-card-subtitle>Edit Email Content for Standardized Emails.</mat-card-subtitle>
+    </mat-card-header>
+    <div class="circular--landscape">
+      <img mat-card-image src="assets/Outlook-mail-template.jpg" alt="Graphic of books" />
+    </div>
+    <mat-card-content>
+      <p>View and edit the content of standardized emails that can be sent directly through this application.</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <a mat-list-item routerLink="/admin/email" routerLinkActive="active">
+          <span class="material-icons"> mail </span>
+          <span translate>EMAIL TEMPLATES</span>
+        </a>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Lookup Table Admin here -->
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Lookup Table Management</mat-card-title>
+      <mat-card-subtitle>Update lookup table values and definitions.</mat-card-subtitle>
+    </mat-card-header>
+    <div class="circular--landscape">
+      <img mat-card-image src="assets/lookup.JPG" alt="Graphic of books" />
+    </div>
+    <mat-card-content>
+      <p>
+        Administrators can update lookup tables and definitions, that are used to populate drop-downs, list boxes, radio
+        buttons etc.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>MANAGE LOOKUPS</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Map Admin here -->
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>ESRI Map Management</mat-card-title>
+      <mat-card-subtitle>Define layers and thematic map views.</mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="circular--portrait">
+      <img mat-card-image src="assets/gis-layers.gif" alt="Photo of a Shiba Inu" />
+    </div>
+
+    <mat-card-content>
+      <p>
+        Administrators can customize the applications map service layers to generate thematic views by toggling on/off
+        individual layers, changing layer colors and definitions, and by switching the target feature layer. In this
+        way, the re-usable map component can be "paired" with specific application views.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>MANAGE MAP THEMES</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

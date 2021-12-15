@@ -1,0 +1,28 @@
+@import "https://js.arcgis.com/4.19/@arcgis/core/assets/esri/themes/light/main.css";
+.esri-view {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+#sceneViewNode {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: aquamarine;
+  font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#performanceInfo {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1em;
+}
+
+table {
+  margin: 1em 0;
+}
+
+.center {
+  text-align: center;
+}

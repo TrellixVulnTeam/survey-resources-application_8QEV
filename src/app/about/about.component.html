@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-card>
+    <h1>
+      <mat-card-title translate>APP_NAME</mat-card-title>
+    </h1>
+    <mat-card-content>
+      <mat-icon>code</mat-icon>
+      <span translate>Version</span> {{ version }}
+      <table class="table small">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Primary Municipal ID</th>
+            <th scope="col">Survey ID</th>
+            <th scope="col">Original Survey ID</th>
+            <th scope="col">Survey Source</th>
+            <th scope="col">Resource Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of posts; let i = index" [attr.data-index]="i">
+            <td>{{ p.presentName }}</td>
+            <td>{{ p.primaryMuniId }}</td>
+            <td>{{ p.surveyId }}</td>
+            <td>{{ p.origSurveyId }}</td>
+            <td>{{ p.surveySource }}</td>
+            <td>{{ p.resourceType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

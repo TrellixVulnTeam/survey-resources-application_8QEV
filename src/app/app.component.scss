@@ -1,0 +1,98 @@
+::ng-deep * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  // margin: 0;
+  // padding: 0;
+  font-family: sans-serif;
+  background-color: #e4f0ff;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 0;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+app-header {
+  color: white;
+  font-size: 14px;
+  grid-area: header;
+  text-align: center;
+  background-color: #fa4453;
+}
+
+app-nav {
+  grid-area: nav;
+  margin-left: 0;
+  background-color: #2abf81;
+  height: 100%;
+  max-width: 300px;
+}
+
+main {
+  grid-area: main;
+  background-color: #4691f4;
+  padding: 0;
+}
+
+app-footer {
+  grid-area: footer;
+  background-color: #2bb961;
+  color: white;
+  text-align: center;
+  padding: 0;
+}
+.hidden-menu-text {
+  display: none;
+}
+.expandable-menu:hover {
+  width: 200px;
+}
+
+.expandable-menu:hover .hidden-menu-text {
+  display: inline-block;
+}
+mat-list-item:hover {
+  background-color: whitesmoke;
+}
+
+ul li {
+  color: white;
+}
+ul li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 991px) {
+  app-nav,
+  app-aside {
+    margin: 0;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "side"
+      "footer";
+    grid-template-rows: auto minmax(60px, auto) 1fr minmax(70px, auto) auto;
+  }
+}

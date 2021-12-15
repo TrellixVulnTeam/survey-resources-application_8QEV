@@ -1,0 +1,109 @@
+<div>
+  <h2>Azure Blob Storage Tests for</h2>
+  <h3 style="font-style: italic">Preservation Trust Program</h3>
+</div>
+<div *ngIf="selectedBlob">
+  <mat-card class="example-card" width="300">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ selectedBlob.blobName }}</mat-card-title>
+      <mat-card-subtitle>{{ selectedBlob.metadata.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="GetSelectedFile()" [alt]="selectedBlob.metadata.description" height="200" />
+    <mat-card-content>
+      <p>
+        {{ selectedBlob.metadata.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="showRenameBlobDialog(selectedBlob)">RENAME FILE</button>
+      <button mat-button (click)="downloadBlob(selectedBlob)">DOWNLOAD</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      GitHub's API rate limit has been reached. It will be reset in one minute.
+    </div>
+  </div>
+
+  <div class="blob-container-files">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="example-table"
+      matSort
+      matSortActive="blobName"
+      matSortDisableClear
+      matSortDirection="asc"
+    >
+      <!-- Number Column -->
+      <ng-container matColumnDef="blobName">
+        <th class="w-50 th-right" mat-header-cell *matHeaderCellDef mat-sort-header ALIGN="right">File Name</th>
+        <td class="w-50 th-right" mat-cell *matCellDef="let row">{{ row.blobName }}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th class="w-150 th-right" mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td class="w-150 th-left" mat-cell *matCellDef="let row">{{ row.metadata.title }}</td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="description">
+        <th class="w-75 th-left" mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td class="w-75 th-left" mat-cell *matCellDef="let row">{{ row.metadata.description }}</td>
+      </ng-container>
+
+      <!-- Created Column -->
+      <ng-container matColumnDef="component">
+        <th class="w-150 th-left" mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Component</th>
+        <td class="w-150 th-left" mat-cell *matCellDef="let row">{{ row.metadata.component }}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action" stickyEnd>
+        <th class="w-75 th-center" mat-header-cell *matHeaderCellDef>Action</th>
+        <td class="w-75 th-center" mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="showEditBlobDialog(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="showDeleteBlobDialog(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <!-- Exporter column -->
+      <ng-container matColumnDef="exporter">
+        <td mat-footer-cell *matFooterCellDef colspan="2">
+          <button class="btn btn-primary" (click)="showUploadBlobDialog()">
+            <i class="material-icons" title="Exporter en CSV">add</i>Add Document
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Paginator column -->
+      <ng-container matColumnDef="paginator">
+        <td mat-footer-cell *matFooterCellDef colspan="3">
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="testSelectedFile(row)"
+        [ngClass]="{ hovered: row.hovered, highlighted: selection.isSelected(row) }"
+        (mouseover)="row.hovered = true"
+        (mouseout)="row.hovered = false"
+      ></tr>
+      <tr mat-footer-row *matFooterRowDef="['exporter', 'paginator']"></tr>
+    </table>
+  </div>
+
+  <!-- <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator> -->
+</div>

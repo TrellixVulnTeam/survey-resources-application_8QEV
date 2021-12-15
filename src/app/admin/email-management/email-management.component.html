@@ -1,0 +1,42 @@
+<ng-container>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      opened
+      class="example-sidenav"
+      [fixedInViewport]="false"
+      [fixedTopGap]="0"
+      [fixedBottomGap]="60"
+    >
+      <mat-toolbar class="example-header">Templates {{ templateId }}</mat-toolbar>
+      <div>
+        <app-email-template-card
+          *ngFor="let vtemp of emailTemplates"
+          [vtemplate]="vtemp"
+          (selectTemplateEvent)="selectTemplate($event)"
+        ></app-email-template-card>
+      </div>
+      <!--  -->
+      <mat-toolbar class="example-footer"
+        ><button>
+          <a mat-list-item routerLink="/admin/email/create" routerLinkActive="active">
+            <span class="material-icons"> new </span>
+            <span translate>ADD NEW</span>
+          </a>
+        </button></mat-toolbar
+      >
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route">
+          <mat-icon class="mr-8">{{ tabItem.icon }}</mat-icon>
+          {{ tabItem.label }}
+        </a>
+      </nav>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>

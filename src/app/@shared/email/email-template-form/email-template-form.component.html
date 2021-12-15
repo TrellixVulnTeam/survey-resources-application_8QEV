@@ -1,0 +1,83 @@
+<form [formGroup]="emailForm" (ngSubmit)="submit()">
+  <fieldset>
+    <legend>{{ emailTemplate.title }}</legend>
+    <p>{{ emailForm.value | json }}</p>
+    <p>{{ templateId }}</p>
+    <div class="formgrid">
+      <!-- <label for="id">ID</label> -->
+      <input type="hidden" formControlName="id" />
+
+      <!-- <label for="clientId">Client ID</label> -->
+      <input type="hidden" formControlName="clientId" />
+
+      <div formGroupName="summary" class="formgroup">
+        <h3 class="groupheader">Summary</h3>
+        <label for="title"> Title </label>
+        <input type="text" formControlName="title" />
+
+        <label for="emailPurpose"> Purpose: </label>
+        <!-- <input type="text" formControlName="emailPurpose"> -->
+        <textarea id="emailPurpose" formControlName="emailPurpose" rows="2" cols="20"></textarea>
+
+        <label for="emailDescription"> Description: </label>
+        <!-- <input type="text" formControlName="emailDescription"> -->
+        <textarea id="emailDescription" formControlName="emailDescription" rows="4" cols="20"></textarea>
+      </div>
+
+      <div formGroupName="sender_recipients" class="formgroup">
+        <h3 class="groupheader">Sender / Recipients</h3>
+        <label for="senderName">Sender Name</label>
+        <input type="text" formControlName="senderName" />
+
+        <label for="senderEmail">Sender Email</label>
+        <input type="text" formControlName="senderEmail" />
+
+        <label for="to">To</label>
+        <input type="text" formControlName="to" />
+
+        <label for="cc">CC</label>
+        <input type="text" formControlName="cc" />
+
+        <label for="bcc">BCC</label>
+        <input type="text" formControlName="bcc" />
+      </div>
+
+      <label for="subject">Subject</label>
+      <!-- <input type="text" formControlName="subject" /> -->
+      <textarea id="subject" formControlName="subject" rows="1" cols="20"></textarea>
+
+      <div formGroupName="message" class="formgroup">
+        <h3 class="groupheader">Email Body</h3>
+        <label for="messageSubtitle">Message Subtitle</label>
+        <!-- <input type="text" formControlName="messageSubtitle" /> -->
+        <textarea id="messageSubtitle" formControlName="messageSubtitle" rows="1" cols="20"></textarea>
+
+        <label for="textBody">Text Body</label>
+        <!-- <input type="text" formControlName="textBody" /> -->
+        <textarea id="textBody" formControlName="textBody" rows="6" cols="20"></textarea>
+
+        <label for="htmlbody">HTML Body </label>
+        <!-- <input type="text" formControlName="htmlbody" /> -->
+        <textarea id="htmlbody" formControlName="htmlbody" rows="6" cols="20"></textarea>
+
+        <label for="dataSource">Data Source </label>
+        <!-- <input type="text" formControlName="dataSource" /> -->
+        <textarea id="dataSource" formControlName="dataSource" rows="2" cols="20"></textarea>
+      </div>
+
+      <!-- <input type="submit" /> -->
+      <button type="submit" mat-fab color="primary" aria-label="save template">
+        <span
+          ><mat-icon>{{ iconInsertUpdate }}</mat-icon></span
+        >
+        <span>{{ strInsertUpdate }}</span>
+      </button>
+
+      <button mat-fab color="warn" aria-label="delete template" (click)="onDelete()">
+        <span><mat-icon>delete</mat-icon></span>
+        <span>DELETE</span>
+      </button>
+      <button (click)="goBack()">go back</button>
+    </div>
+  </fieldset>
+</form>

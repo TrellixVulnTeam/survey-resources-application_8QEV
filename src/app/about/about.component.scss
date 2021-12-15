@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+  padding: 1rem;
+  width: 50%
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+thead {
+  background-color: red;
+}
+
+td {
+  background-color: pink;
+}
+
+main {
+  grid-area: main;
+  background-color: #f8ed8b;
+  padding: 0;
+}

@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="example-container mat-elevation-z8"></div>
+
+  <h2>Users</h2>
+  <button>ADD</button>
+
+  Total users: (showing users registered by {{ 'APPLICATION NAME' }}) Filters: Enabled Disabled Role Claim Type Claim
+  Value
+
+  <!-- <form class="example-form">
+        <input type="text"
+               placeholder="Search BY UserName or Email"
+               [formControl]="control"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let email of filteredUsers$ | async" [value]="email">
+            {{email}}
+          </mat-option>
+        </mat-autocomplete>
+      </form> -->
+
+  <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      GitHub's API rate limit has been reached. It will be reset in one minute.
+    </div>
+  </div>
+
+  <div class="example-table-container">
+    <button mat-button (click)="showUserInvite()">Add</button>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="example-table"
+      matSort
+      matSortActive="name"
+      matSortDisableClear
+      matSortDirection="desc"
+    >
+      <!-- Title Column -->
+      <ng-container matColumnDef="name">
+        <th class="w-75 th-left" mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+        <td class="w-75 th-left" mat-cell *matCellDef="let row">{{ row.userName }}</td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="email">
+        <th class="w-100 th-left" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td class="w-100 th-left" mat-cell *matCellDef="let row">{{ row.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="claims">
+        <th class="w-75 th-left" mat-header-cell *matHeaderCellDef mat-sort-header>Claims</th>
+        <mat-cell *matCellDef="let element">
+          <div class="claims">
+            <ng-container *ngFor="let claim of element.claims">
+              <div class="claim">
+                <ul>
+                  <li>
+                    <strong>{{ claim.claimType }}</strong
+                    >: {{ claim.claimValue }}
+                  </li>
+                </ul>
+              </div>
+            </ng-container>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="roles">
+        <th class="w-75 th-left" mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+        <!-- <td class="w-75 th-left" mat-cell *matCellDef="let element">
+               <ul *ngFor="let role of element.roles">
+                  <li><strong>{{role.name}}</strong></li>
+               </ul>
+            </td> -->
+        <td class="w-75 th-left" mat-cell *matCellDef="let row">
+          <!-- <mat-form-field class="example-chip-list">
+                <mat-label>Favorite Roles</mat-label>
+                <mat-chip-list #chipList aria-label="Role selection">
+                  <mat-chip
+                    *ngFor="let role of userRoles"
+                    [selectable]="selectable"
+                    [removable]="removable"
+                    (removed)="remove(role)">
+                    {{role}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input
+                    placeholder="New role..."
+                    #roleInput
+                    [formControl]="roleCtrl"
+                    [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let role of filteredRoles | async" [value]="role"> -->
+          {{ row.roles[0].replace('ostf_program_', '') }}
+          <!-- </mat-option>
+                </mat-autocomplete>
+              </mat-form-field> -->
+        </td>
+      </ng-container>
+
+      <!-- Number Column -->
+      <ng-container matColumnDef="status">
+        <th class="w-50 th-left" mat-header-cell *matHeaderCellDef mat-sort-header ALIGN="right">Status</th>
+        <td class="w-50 th-left" mat-cell *matCellDef="let row">
+          <!-- <mat-button-toggle [checked]="row.isEnabled" >{{row.isEnabled}}</mat-button-toggle> -->
+          <button mat-flat-button [color]="row.isEnabled ? onColor : offColor" style="width: 7em">
+            {{ row.status ? onText : offText }}
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action" stickyEnd>
+        <th class="w-75 th-center" mat-header-cell *matHeaderCellDef>Action</th>
+        <td class="w-75 th-center" mat-cell *matCellDef="let row">
+          <button
+            mat-mini-fab
+            color="primary"
+            aria-label="Example icon button with a delete icon"
+            (click)="showUserUpdate(row)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            color="warn"
+            aria-label="Example icon button with a delete icon"
+            (click)="deleteRole(row)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selection.toggle(row)"
+        [ngClass]="{ hovered: row.hovered, highlighted: selection.isSelected(row) }"
+        (mouseover)="row.hovered = true"
+        (mouseout)="row.hovered = false"
+      ></tr>
+    </table>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+</div>

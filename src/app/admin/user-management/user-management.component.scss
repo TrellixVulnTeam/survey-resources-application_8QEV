@@ -1,0 +1,93 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+
+.mat-list-base.inline-list {
+  display: flex;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  /* display: inline-grid; */
+  /* display: grid; */
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  font-size: medium;
+  font-weight: bold;
+  text-decoration: none;
+  justify-content: center;
+}
+
+:host ::ng-deep .th-right {
+  text-align: right;
+  padding: 10px 100px 10px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th {
+  vertical-align: middle;
+}
+td {
+  vertical-align: top;
+}
+
+.w-30 {
+  max-width: 30px;
+}
+.w-50 {
+  max-width: 50px;
+}
+
+.w-75 {
+  max-width: 75px;
+}
+
+.w-100 {
+  max-width: 100px;
+}
+.w-150 {
+  max-width: 100px;
+}
+.th-center {
+  text-align: center;
+}
+.th-left {
+  text-align: left;
+}
+
+::ng-deep .highlight {
+  color: white;
+  background: #673ab7;
+}
+
+.selected {
+  background-color: red;
+}
+
+.mat-row.highlighted {
+  background: lightblue;
+}
+
+.mat-row.selected {
+  background: rgb(62, 86, 94);
+}
+
+.mat-row:hover {
+  background-color: rgba(211, 231, 228, 0.356);
+}
+
+.mat-header-cell,
+.mat-sort-header {
+  background-color: rgb(5, 23, 80);
+  color: white;
+}
