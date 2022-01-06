@@ -27,7 +27,7 @@ export const environment = {
   response: 'code',
 
   // API resources
-  serverUrl: '/api',
+  serverUrl: '',
   morrisClientApiUrl: 'https://morrisgisapps.co.morris.nj.us/apis/morris-clients-api', //'https://localhost:44395',
   morrisIdentityApiUrl: 'https://morrisgisapps.co.morris.nj.us/apis/morris-identityapi',
   morrisEmailApiUrl: 'https://morrisgisapps.co.morris.nj.us/svcs/mail',
