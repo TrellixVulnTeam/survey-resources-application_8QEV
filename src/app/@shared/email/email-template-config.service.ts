@@ -50,12 +50,10 @@ export class EmailTemplateConfigService {
 
   getTemplate(id: number): Observable<EmailTemplate> {
     const API_URL = `${this.apiUrl}/EmailTemplates/${id}`;
-    return this.http
-      .get<EmailTemplate>(API_URL, { headers: this.headers })
-      .pipe(
-        tap((_) => console.log(`fetched template id=${id}`)),
-        catchError(this.handleError<EmailTemplate>(`getTemplate id=${id}`))
-      );
+    return this.http.get<EmailTemplate>(API_URL, { headers: this.headers }).pipe(
+      tap((_) => console.log(`fetched template id=${id}`)),
+      catchError(this.handleError<EmailTemplate>(`getTemplate id=${id}`))
+    );
   }
 
   /**

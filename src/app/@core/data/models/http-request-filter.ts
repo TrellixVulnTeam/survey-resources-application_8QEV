@@ -1,4 +1,3 @@
-import { NullTemplateVisitor } from '@angular/compiler';
 
 export interface HttpRequestFilter {
   FieldName?: string;

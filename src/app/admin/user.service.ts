@@ -21,23 +21,17 @@ export class UserService {
 
   addUser(user: UserRolesAndClaims): Observable<UserRolesAndClaims> {
     let API_URL = `${this.apiUrl}/UserAdmin`;
-    return this.http
-      .post<UserRolesAndClaims>(API_URL, user, { headers: this.headers })
-      .pipe(catchError(this.error));
+    return this.http.post<UserRolesAndClaims>(API_URL, user, { headers: this.headers }).pipe(catchError(this.error));
   }
 
   assignUserRole(userole: UserRoleCRUD): Observable<UserRolesAndClaims> {
     let API_URL = `${this.apiUrl}/UserAdmin/user-role`;
-    return this.http
-      .post<UserRolesAndClaims>(API_URL, userole, { headers: this.headers })
-      .pipe(catchError(this.error));
+    return this.http.post<UserRolesAndClaims>(API_URL, userole, { headers: this.headers }).pipe(catchError(this.error));
   }
 
   updateUserRole(userole: UserRoleCRUD): Observable<UserRolesAndClaims> {
     let API_URL = `${this.apiUrl}/UserAdmin/user-role`;
-    return this.http
-      .put<UserRolesAndClaims>(API_URL, userole, { headers: this.headers })
-      .pipe(catchError(this.error));
+    return this.http.put<UserRolesAndClaims>(API_URL, userole, { headers: this.headers }).pipe(catchError(this.error));
   }
   deleteUserRole(userrole: UserRoleCRUD): Observable<any> {
     let API_URL = `${this.apiUrl}/UserAdmin/user-role`;
