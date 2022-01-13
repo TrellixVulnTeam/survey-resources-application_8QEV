@@ -1,4 +1,3 @@
-
 export interface HttpRequestFilter {
   FieldName?: string;
   FieldAlias?: string;

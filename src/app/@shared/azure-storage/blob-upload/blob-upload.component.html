@@ -1,0 +1,115 @@
+<div [formGroup]="uploadForm" class="pt-5" style="width: 50%; margin: auto">
+  <div id="imagePreview" [style.backgroundImage]="'url(' + imageShow + ')'"></div>
+  <div class="form-group">
+    <label for="container">Container Name</label>
+    <input type="text" class="form-control" placeholder="container" formControlName="container" />
+    <span *ngIf="uploadForm.get('container').errors?.maxlength">max 40 characters</span>
+  </div>
+
+  <div class="form-group">
+    <label for="asset">Asset</label>
+    <input
+      id="inputFile"
+      type="file"
+      class="form-control"
+      placeholder="asset"
+      formControlName="asset"
+      (change)="GetInputFile($event)"
+    />
+
+    <span *ngIf="uploadForm.get('asset').errors?.required">Please select a file(s)</span>
+    <span *ngIf="uploadForm.get('asset').errors?.maxContentSize">The total size must not exceed 15K</span>
+  </div>
+
+  <div class="form-group">
+    <label for="saveAsFileName">Save As</label>
+    <input type="text" class="form-control" placeholder="saveAsFileName" formControlName="saveAsFileName" />
+    <span *ngIf="uploadForm.get('saveAsFileName').errors?.maxlength">max 40 characters</span>
+  </div>
+
+  <div class="form-group">
+    <h2>MetaData</h2>
+    <p>optional</p>
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" placeholder="title" formControlName="title" />
+      <span *ngIf="uploadForm.get('title').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="caption">Caption</label>
+      <input type="text" class="form-control" placeholder="caption" formControlName="caption" />
+      <span *ngIf="uploadForm.get('caption').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Alt Text</label>
+      <input type="altText" class="form-control" placeholder="altText" formControlName="altText" />
+      <span *ngIf="uploadForm.get('altText').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="refDate">Reference Date</label>
+      <input type="text" class="form-control" placeholder="refDate" formControlName="refDate" />
+      <span *ngIf="uploadForm.get('refDate').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="latitude">Latitude</label>
+      <input type="text" class="form-control" placeholder="latitude" formControlName="latitude" />
+      <span *ngIf="uploadForm.get('latitude').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="longitude">Longitude</label>
+      <input type="text" class="form-control" placeholder="longitude" formControlName="longitude" />
+      <span *ngIf="uploadForm.get('longitude').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" placeholder="description" formControlName="description" />
+      <span *ngIf="uploadForm.get('description').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input type="text" class="form-control" placeholder="category" formControlName="category" />
+      <span *ngIf="uploadForm.get('category').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="user">User</label>
+      <input type="text" class="form-control" placeholder="user" formControlName="user" />
+      <span *ngIf="uploadForm.get('user').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="owner">Owner</label>
+      <input type="text" class="form-control" placeholder="owner" formControlName="owner" />
+      <span *ngIf="uploadForm.get('owner').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="component">Component</label>
+      <input type="text" class="form-control" placeholder="component" formControlName="component" />
+      <span *ngIf="uploadForm.get('component').errors?.maxlength">max 40 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="domId">Dom Id</label>
+      <input type="text" class="form-control" placeholder="domId" formControlName="domId" />
+      <span *ngIf="uploadForm.get('domId').errors?.maxlength">max 40 characters</span>
+    </div>
+  </div>
+
+  <button class="btn btn-primary mt-3" type="submit" [disabled]="!uploadForm.valid" (click)="addDocument()">
+    UPLOAD
+  </button>
+
+  <br />
+  <p><strong>Input:</strong></p>
+  <pre>{{ uploadForm.value | json }}</pre>
+  <br />
+</div>

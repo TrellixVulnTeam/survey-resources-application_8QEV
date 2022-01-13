@@ -23,7 +23,7 @@ export const environment = {
   response: 'code',
 
   // API resources
-  serverUrl: 'https://api.chucknorris.io',
+  serverUrl: 'https://morrisgisapps.co.morris.nj.us',
   morrisClientApiUrl: 'https://morrisgisapps.co.morris.nj.us/apis/morris-clients-api',
   morrisIdentityApiUrl: 'https://morrisgisapps.co.morris.nj.us/apis/morris-identityapi',
   morrisEmailApiUrl: 'https://morrisgisapps.co.morris.nj.us/svcs/mail',
