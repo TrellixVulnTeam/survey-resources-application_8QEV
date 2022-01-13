@@ -1,0 +1,78 @@
+#delete-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.warn {
+  fill: rgb(177, 15, 15);
+}
+.svg-button-foreground {
+  fill: white;
+}
+svg:hover .svg-button-background {
+  filter: brightness(1.4);
+}
+
+/* Style the list */
+ul.breadcrumb {
+  list-style: none;
+}
+span.pill {
+  vertical-align: middle;
+}
+/* Display list items side by side */
+ul.breadcrumb li {
+  background-color: #ddd;
+  border: none;
+  color: #0275d8;
+  padding: 1px 5px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+a {
+  display: inline-block;
+  text-align: left;
+}
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+// ul.breadcrumb li + li:before {
+//   padding: 8px;
+//   color: black;
+//   content: "\203A";
+// }
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #0275d8;
+
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+button.delete {
+  background-image: url("/img/button-delete.svg");
+  background-size: 100%;
+  height: 1.5em;
+  width: 1.5em;
+}

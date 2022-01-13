@@ -9,7 +9,7 @@ import { TabItem } from '@app/@core/data/models/tab-item';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
   sideNavWidth = 12;
@@ -23,23 +23,23 @@ export class NavComponent implements OnInit {
     {
       label: 'SURVEY RESOURCES',
       icon: 'info',
-      route: ['/about']
+      route: ['/about'],
     },
     {
       label: 'MAPS',
       icon: 'explore',
-      route: ['/maps']
+      route: ['/maps'],
     },
     {
       label: 'ADMIN',
       icon: 'widgets',
-      route: ['/admin']
+      route: ['/admin'],
     },
     {
       label: 'TEST',
       icon: 'public',
-      route: ['/test']
-    }
+      route: ['/test'],
+    },
   ];
   constructor(
     private router: Router,
@@ -52,11 +52,11 @@ export class NavComponent implements OnInit {
   ngOnInit() {}
 
   logout() {
-    this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true}));
+    this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
 
   get username(): string | null {
-    const credentials =  this.credentialsService.credentials;
+    const credentials = this.credentialsService.credentials;
     return credentials ? credentials.username : null;
   }
 
@@ -77,5 +77,4 @@ export class NavComponent implements OnInit {
     this.sideNavWidth = 4;
     console.log('decrease sidenav width');
   }
-
 }

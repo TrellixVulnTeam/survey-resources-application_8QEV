@@ -1,0 +1,57 @@
+$timing: 0.4s;
+$ease: cubic-bezier(0.865, 0.14, 0.095, 0.87);
+
+.accordion {
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+  background-color: rgb(88, 92, 54);
+  display: block;
+}
+
+.accordion-panel {
+  position: relative;
+}
+
+.accordion__label,
+.accordion__content {
+  padding: 14px 20px;
+}
+
+.accordion__label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.1s;
+}
+
+.accordion__label:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.accordion__content {
+  overflow: auto;
+  background: white;
+  line-height: 1.6;
+  font-size: 0.85em;
+  color: black;
+  display: none;
+  transition: height $timing $ease;
+}
+
+.accordion__input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  // display: none;
+  color: antiquewhite;
+  fill: antiquewhite;
+}
+.accordion__input:checked ~ .accordion__content {
+  display: block;
+  max-height: 50vh;
+}

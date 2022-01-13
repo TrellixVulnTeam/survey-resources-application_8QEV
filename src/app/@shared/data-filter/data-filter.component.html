@@ -1,0 +1,28 @@
+<ul id="master-card" class="field-group" multiple>
+  <li
+    *ngFor="let group of searchGroups; let gi = index"
+    [attr.data-index]="gi"
+    [attr.ActiveGroup]="group.ActiveGroup ? group.ActiveGroup : null"
+    class="search-group"
+    (click)="toggleGroup(gi)"
+  >
+    {{ group.GroupAlias }}
+    <ul *ngIf="group.ActiveGroup || group.ExpandedByDefault" id="master-card" class="field-list" multiple>
+      <li
+        class="search-field"
+        *ngFor="let field of group.SearchFields; let fi = index"
+        [attr.Current]="field.isCurrent ? field.isCurrent : null"
+        [attr.Selected]="field.ActiveFilter ? field.ActiveFilter : null"
+        (click)="toggleField(gi, fi); $event.stopPropagation()"
+      >
+        <!-- Child Checkbox -->
+        <!-- <input type="checkbox" [(ngModel)]="field.isSelected" name="list_name_child"
+            value="{{field}}" (ngModelChange)="selectField(field)" (click)="toggleField(gi,fi);$event.stopPropagation()"/> -->
+        <p *ngIf="group.ExpandAllSearchFields === false">{{ field.FieldAlias }}</p>
+        <div *ngIf="field.ActiveFilter || field.isCurrent || group.ExpandAllSearchFields">
+          <app-search-input [ControlMetadata]="field"></app-search-input>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -9,6 +9,10 @@ import { LoaderComponent } from './loader/loader.component';
 //import { EmailMessageComponent } from './email/email-message/email-message.component';
 import { BlobUploadComponent } from './azure-storage/blob-upload/blob-upload.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
+import { DataContainerComponent } from './data-container/data-container.component';
+import { DataFilterComponent } from './data-filter/data-filter.component';
+import { DataBreadcrumbsComponent } from './data-breadcrumbs/data-breadcrumbs.component';
+import { DataResultsComponent } from './data-results/data-results.component';
 
 //import { EmailTemplateCardComponent } from './email/email-template-card/email-template-card.component';
 //import { EmailTemplateFormComponent } from './email/email-template-form/email-template-form.component';
@@ -22,6 +26,10 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
     //  EmailMessageComponent,
     BlobUploadComponent,
     SearchInputComponent,
+    DataContainerComponent,
+    DataFilterComponent,
+    DataBreadcrumbsComponent,
+    DataResultsComponent,
 
     // EmailTemplateCardComponent,
     //  EmailTemplateFormComponent,
@@ -35,6 +43,7 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
     BlobUploadComponent,
     //  EmailTemplateCardComponent,
     //  EmailTemplateFormComponent,
+    DataContainerComponent,
   ],
 })
 export class SharedModule {}

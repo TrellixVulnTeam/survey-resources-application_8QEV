@@ -1,0 +1,96 @@
+.accordion {
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(184, 129, 129, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: purple;
+}
+
+.accordion__label,
+.accordion__content {
+  padding: 4px 4px;
+}
+
+.accordion__label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.1s;
+}
+
+.accordion__label:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.accordion__content {
+  background: white;
+  line-height: 2.6;
+  font-size: 0.85em;
+  display: none;
+}
+
+.accordion__input {
+  display: none;
+}
+
+.accordion__input:checked ~ .accordion__content {
+  display: block;
+}
+
+.field-group {
+  background-color: rgb(183, 170, 240);
+  list-style: none;
+}
+.field-list {
+  background-color: rgb(227, 219, 243);
+  list-style: none;
+}
+
+.search-group {
+  background-color: rgb(106, 209, 146);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.search-group[ActiveGroup] {
+  background-color: rgb(31, 163, 82);
+}
+
+.search-field[Selected] {
+  background-color: rgb(148, 138, 66);
+  text-transform: none;
+  text-align: left;
+}
+
+.search-field[Selected] {
+  background-color: rgb(95, 88, 34);
+}
+
+.search-field[Current] {
+  background-color: rgb(216, 214, 197);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(109, 73, 73);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

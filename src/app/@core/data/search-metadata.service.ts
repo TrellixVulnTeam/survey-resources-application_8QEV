@@ -40,6 +40,7 @@ export class SearchMetadataService {
   }
 
   getSurveyResourceMetadata() {
+    console.log(this);
     return this.http.get<SearchTable>('/assets/data/survey-resources-metadata.json').subscribe((st) => {
       this._searchGroups$.next(
         st.SearchGroups.map((sg) => {

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SurveyResourcesApiService {
-  private url = 'https://localhost:44311/api/SurveyResources/PresentName?PresentName=';
+  private url = 'https://mcgisdev12/apis/survey-resources-api-dev/api/SurveyResources/PresentName?PresentName=';
 
   constructor(private http: HttpClient) {}
 

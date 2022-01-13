@@ -1,9 +1,8 @@
-<nav>  
-    <mat-nav-list class="expandable-menu">
-      <mat-list-item *ngFor="let tabItem of tabs" [routerLink]="tabItem.route" routerLinkActive="active">
-        <mat-icon mat-list-icon class="material-icons mat-list-item__start-detail">{{ tabItem.icon }}</mat-icon>
-        <h5 class="hidden-menu-text">{{ tabItem.label }}</h5>
-      </mat-list-item>
-    </mat-nav-list>
-  </nav>
-  
+<nav>
+  <mat-nav-list class="expandable-menu">
+    <mat-list-item *ngFor="let tabItem of tabs" [routerLink]="tabItem.route" routerLinkActive="active">
+      <mat-icon mat-list-icon class="material-icons mat-list-item__start-detail">{{ tabItem.icon }}</mat-icon>
+      <h5 class="hidden-menu-text">{{ tabItem.label }}</h5>
+    </mat-list-item>
+  </mat-nav-list>
+</nav>

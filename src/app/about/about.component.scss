@@ -1,7 +1,29 @@
-.container {
+.about-page-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 12px;
+  grid-template-areas: "aside content";
+  height: 100%;
+  // text-align: center;
+  // padding: 1rem;
+  // width: 50%;
+}
+
+.about-page-content {
+  color: white;
+  font-size: 14px;
+  grid-area: content;
   text-align: center;
-  padding: 1rem;
-  width: 50%
+  background-color: #1512bb;
+}
+
+app-data-container {
+  color: white;
+  font-size: 14px;
+  grid-area: aside;
+  text-align: center;
+  background-color: #acc8f1;
 }
 
 .mat-icon {
@@ -16,8 +38,8 @@ td {
   background-color: pink;
 }
 
-main {
-  grid-area: main;
-  background-color: #f8ed8b;
-  padding: 0;
-}
+// main {
+//   grid-area: main;
+//   background-color: #f8ed8b;
+//   padding: 0;
+// }

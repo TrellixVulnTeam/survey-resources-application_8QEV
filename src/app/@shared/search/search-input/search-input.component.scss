@@ -1,0 +1,256 @@
+div {
+  background-color: beige;
+  background: rgb(168, 155, 155);
+
+  text-transform: uppercase;
+}
+#information {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.butHelp:hover + .hide {
+  display: block;
+  color: rgb(13, 31, 14);
+}
+label {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: rgb(25, 7, 59);
+}
+#instructions {
+  font-weight: 200;
+
+  color: white;
+}
+input {
+  color: blue;
+}
+
+h1 {
+  margin-top: 10vh;
+  font-size: 2.5rem;
+  max-width: 500px;
+  letter-spacing: 3px;
+  text-align: center;
+  line-height: 1.5;
+  font-family: "Open Sans";
+  text-transform: capitalize;
+  font-weight: 800;
+  color: white;
+
+  span {
+    color: #ff908b;
+  }
+}
+
+form {
+  position: relative;
+  width: 18rem;
+  margin-top: 8vh;
+}
+
+ul {
+  background-color: antiquewhite;
+}
+li {
+  background-color: blueviolet;
+  color: #0a305e;
+}
+.chosen-value,
+.value-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chosen-value {
+  font-family: "Ek Mukta";
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  height: 4rem;
+  font-size: 1.1rem;
+  padding: 1rem;
+  background-color: #fafcfd;
+  border: 3px solid transparent;
+  transition: 0.3s ease-in-out;
+
+  &::-webkit-input-placeholder {
+    color: #333;
+  }
+
+  &:hover {
+    background-color: #ff908b;
+    cursor: pointer;
+
+    &::-webkit-input-placeholder {
+      color: #333;
+    }
+  }
+
+  &:focus,
+  &.open {
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+    outline: 0;
+    background-color: #ff908b;
+    color: #000;
+
+    &::-webkit-input-placeholder {
+      color: #000;
+    }
+  }
+}
+ul {
+  list-style: none;
+}
+.lookup-list {
+  list-style: none;
+  width: 250px;
+  margin-top: 4rem;
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.2);
+  overflow: scroll;
+  max-height: 120px;
+  transition: 0.3s ease-in-out;
+
+  &.open {
+    max-height: 320px;
+    overflow: auto;
+  }
+
+  li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    position: relative;
+    height: 1.2rem;
+    background-color: #fafcfd;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    opacity: 1;
+
+    &:hover {
+      background-color: #ff908b;
+    }
+
+    &.closed {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      opacity: 0;
+    }
+  }
+}
+
+.filter-input {
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid #ccc;
+  margin-bottom: 5px;
+  padding-right: 30px;
+}
+
+.clear-selection {
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+  position: absolute;
+}
+
+.lookup-list {
+  padding: 5px;
+  margin: 5px;
+}
+
+li.lookup-item {
+  list-style: none;
+  font-size: 12px;
+  padding: 3px 0px;
+  height: 20px;
+}
+li.lookup-item input {
+  height: 20px;
+  // width: 20px;
+}
+
+.lookup-text {
+  vertical-align: top;
+}
+
+.selected-game {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 24px;
+  background: #b9cfea;
+  margin-bottom: 10px;
+  padding: 2px 11px 4px 11px;
+  border-radius: 8px;
+}
+
+.delete-game {
+  font-size: 13px;
+  padding: 3px 6px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.delete-game:hover {
+  background: #99abc1;
+  padding: 3px 6px;
+  border-radius: 15px;
+}
+
+.filter-wrap {
+  position: relative;
+}
+
+.filter-clear {
+  position: absolute;
+  margin-left: -24px;
+  margin-top: 11px;
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.svg-button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin: 4px 10px;
+}
+.but-circle {
+  fill: rgb(60, 102, 60);
+}
+svg .information {
+  fill: rgb(63, 100, 199);
+}
+.svg-button-background {
+  fill: rgb(185, 41, 30);
+}
+.but-icon,
+.svg-button-foreground {
+  fill: #fafcfd;
+}
+svg:hover .but-circle {
+  filter: brightness(1.4);
+}
+svg:hover .svg-button-background.warn {
+  filter: brightness(1.4);
+}

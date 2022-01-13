@@ -1,1 +1,184 @@
-<p>search-input works!</p>
+<div *ngIf="ControlMetadata !== undefined" (click)="$event.stopPropagation()">
+  <div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="32"
+      width="32"
+      viewBox="0 0 64 32"
+      class="svg-button"
+      id="information"
+    >
+      <circle r="32" cy="32" cx="32" class="svg-button-background information" />
+      <path
+        d="m23.471 54.774-.081-1.38v-1.746q0-4.304 1.218-7.511 1.218-3.248 5.44-8.283.203-.243.65-.771 5.319-6.293 5.319-12.627 0-4.547-2.233-7.186-2.193-2.68-5.969-2.68-4.303 0-6.577 3.167-2.273 3.167-2.273 9.216v1.218h-6.7v-1.055q0-9.054 3.939-13.845 3.979-4.79 11.53-4.79 7.186 0 11.409 4.344 4.222 4.344 4.222 11.774 0 7.592-7.308 16.118l-.122.122-.08.08q-6.05 7.106-6.05 13.358v1.462q.04.568.081 1.015zm-.325 15.753V61.96h6.902v8.567z"
+        class="svg-button-foreground"
+        transform="matrix(1.1953 0 -.1508 .83662 4.044 .371)"
+      />
+    </svg>
+    <div class="hide">{{ ControlMetadata?.Instructions }}</div>
+
+    <div [ngSwitch]="ControlMetadata.CntrlType">
+      <!-- Text -->
+      <div *ngSwitchCase="'txtSearch'">
+        <label for="ControlInput1">{{ ControlMetadata?.FieldAlias }}: </label>
+        <input
+          #ControlInput1
+          [(ngModel)]="control1"
+          data-req-type="filter"
+          data-req-operator="="
+          (keyup.enter)="upsertFilter()"
+        />
+      </div>
+      <!-- Free text Search -->
+      <div *ngSwitchCase="'txtFreeSearch'">
+        <label for="txtFreeSearch">{{ ControlMetadata?.FieldAlias }}: </label>
+        <input
+          [(ngModel)]="txtFreeSearch"
+          (ngModelChange)="this.txtFreeSearchChanged.next($event)"
+          placeholder="Search..."
+        />
+        <select name="textValues" id="textValues">
+          <option *ngFor="let val of freeTextList" value="val">{{ val }}</option>
+        </select>
+      </div>
+
+      <!-- List Search -->
+      <div *ngSwitchCase="'multiColumnlistBx'">
+        <label for="multiColumnlistBx">{{ ControlMetadata?.FieldAlias }}: </label>
+        <ul #multiColumnlistBx class="lookup-list">
+          <li *ngFor="let row of lookupTab" class="lookup-item">
+            <input
+              (change)="getSelected()"
+              type="checkbox"
+              name="lookupTab"
+              value="{{ row.value }}"
+              [(ngModel)]="row.selected"
+            />
+            <span class="lookup-text">{{ row.value }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Combobox Search -->
+      <div *ngSwitchCase="'txtComboSearch'">
+        <label for="txtComboSearch">{{ ControlMetadata?.FieldAlias }}: </label>
+        <input #txtComboSearch />
+        <select name="textValues" id="textValues">
+          <option *ngFor="let val of freeTextList" value="val">{{ val }}</option>
+        </select>
+      </div>
+
+      <!-- Listbox Search -->
+      <div *ngSwitchCase="'listBxLong'">
+        <label for="listBxLong">{{ ControlMetadata?.FieldAlias }}: </label>
+        <select name="textValues" id="textValues">
+          <option *ngFor="let val of freeTextList" value="val">{{ val }}</option>
+        </select>
+      </div>
+
+      <!-- Multi-select Option Search -->
+      <div *ngSwitchCase="'optionSearch'">
+        <label for="optionSearch">{{ ControlMetadata?.FieldAlias }}: </label>
+        <select name="textValues" id="textValues">
+          <option *ngFor="let val of freeTextList" value="val">{{ val }}</option>
+        </select>
+      </div>
+
+      <!-- Single-select Radio Search -->
+      <div *ngSwitchCase="'radioSearch'">
+        <label for="optionSearch">{{ ControlMetadata?.FieldAlias }}: </label>
+        <select name="textValues" id="textValues">
+          <option *ngFor="let val of freeTextList" value="val">{{ val }}</option>
+        </select>
+      </div>
+
+      <!-- Text Pair Search -->
+      <div *ngSwitchCase="'txtPair'"></div>
+
+      <!-- Range Slider Search -->
+      <div *ngSwitchCase="'rangeValue'"></div>
+
+      <!--Date Range Search-->
+      <div *ngSwitchCase="'rangeDate'">
+        <label for="ControlInput2">{{ ControlMetadata?.FieldAlias }}: </label>
+        <input
+          #ControlInput2
+          [(ngModel)]="control2"
+          data-req-type="filter"
+          data-req-operator="="
+          (keyup.enter)="upsertFilter()"
+        />
+      </div>
+
+      <!--True/False Search-->
+      <div *ngSwitchCase="'rdoSPYesNo'">
+        <form>
+          <div>
+            <input
+              type="radio"
+              id="rdoChoice1"
+              [attr.name]="ControlMetadata?.FieldName"
+              [attr.value]="ControlMetadata.Value1"
+              checked
+            />
+            <label for="rdoChoice1">{{ ControlMetadata.Label1 }}</label>
+
+            <input
+              type="radio"
+              id="rdoChoice2"
+              [attr.name]="ControlMetadata?.FieldName"
+              [attr.value]="ControlMetadata.Value1"
+              checked
+            />
+            <label for="rdoChoice2">{{ ControlMetadata.Label1 }}</label>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="64"
+      width="64"
+      viewBox="0 0 64 64"
+      class="svg-button"
+      (click)="upsertFilter()"
+    >
+      <circle r="32" cy="32" cx="32" class="but-circle" />
+      <circle r="28.0" cy="50%" cx="50%" class="but-icon" />
+      <circle r="24.5" cy="50%" cx="50%" class="but-circle" />
+      <path
+        transform="matrix(1.05045 0 0 .95887 2.935 1.316)"
+        d="M16.277 17.162 47.723 32.02 16.39 46.838z"
+        class="but-icon"
+      />
+    </svg>
+
+    <!-- <button (click) = "upsertFilter()"><object type="image/svg+xml" data="/assets/images/circle-execute-icon-min.svg" width="32" height="32"> </object></button>
+          <button (click) = "removeFilter(ControlMetadata.FieldName)"><object type="image/svg+xml" data="/assets/images/circle-delete-icon-min.svg" width="32" height="32"> </object></button> -->
+
+    <div class="errorMessage" *ngIf="!isValid">{{ validationErrorMessage }}</div>
+  </div>
+
+  <!-- Range Slider -->
+  <!-- <div style="margin: 40px">
+    <svg id="wrapper" width="100%" height="50%">
+      <rect fill="grey" width="100%" height="5" rx="3" y="5"></rect>
+      <rect fill="blue" [attr.x]="this.getThumbPosition('thumbPosition1')" [attr.width]="this.getLineWidth()" height="5" rx="3" y="5"></rect>
+      <text
+        *ngFor="let label of labels; let i = index"
+        fill="blue"
+        y="20"
+        style="text-anchor: middle;font-weight:bold"
+        [attr.x]="this.getLabelXPosition(i)"
+      >
+        {{label}}
+      </text>
+      <ellipse cy="7.5" [attr.cx]="this.getThumbPosition('thumbPosition1')" rx="7.5" ry="7.5" fill="blue" (mousedown)="setThumbPositionObj('thumbPosition1')"/>
+      <ellipse cy="7.5" [attr.cx]="this.getThumbPosition('thumbPosition2')" rx="7.5" ry="7.5" fill="red" (mousedown)="setThumbPositionObj('thumbPosition2')"/>
+    </svg>
+  </div> -->
+</div>
