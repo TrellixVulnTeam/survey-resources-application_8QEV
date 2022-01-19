@@ -29,7 +29,13 @@
               "src/robots.txt",
               "src/manifest.webmanifest",
               "src/assets",
-              "src/web.config"
+              "src/web.config",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@arcgis/core/assets",
+                "output": "/assets/"
+              }
             ],
             "styles": ["src/main.scss"],
             "scripts": [],
