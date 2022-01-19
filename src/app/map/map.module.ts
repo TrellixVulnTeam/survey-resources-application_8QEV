@@ -9,6 +9,7 @@ import { EsriMapModule, ESRI_MAP_CONFIG } from 'esri-map';
 const mapConfig = {
   mapServiceUrl:
     'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelSearcher_Dynamic/MapServer',
+  nearmapKey: '',
   baseMaps: ['topo-vector', 'hybrid'],
   sublayerConfig: [
     {
