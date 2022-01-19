@@ -16,17 +16,25 @@
         </a>
       </div>
       <div class="navbar-nav ml-auto">
-        <app-language-selector inNavbar="true" menuClass="dropdown-menu dropdown-menu-right"></app-language-selector>
-        <div class="nav-item" ngbDropdown>
+         <div class="nav-item" ngbDropdown>
           <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
             <i class="fas fa-user-circle"></i>
           </a>
           <div ngbDropdownMenu aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
-            <h6 class="dropdown-header">
-              <span translate>Welcomev</span> <b>{{ username }}</b>
-            </h6>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="logout()" translate>Logout</button>
+            <div *ngIf="isAuthenticated; else noAuth">
+              <button (click)="logout()">Logout</button>
+              <!-- <button (click)="logoffAndRevokeTokens()">Logout and revoke tokens</button>
+              <button (click)="revokeAccessToken()">Revoke access token</button>
+              <button (click)="revokeRefreshToken()">Revoke refresh token</button>
+              <button (click)="refreshSession()">Refresh session</button> -->
+              Welcome:<pre>{{ email$ }}</pre>
+               
+            </div>
+          
+            <ng-template #noAuth>
+              <button (click)="login()">Login</button>
+              <hr />
+            </ng-template>
           </div>
         </div>
       </div>

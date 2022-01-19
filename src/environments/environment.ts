@@ -9,22 +9,31 @@
 // Note that as usual, any environment variables you expose through it will end up in your
 // bundle, and you should not use it for any sensitive information like passwords or keys.
 import { env } from './.env';
-import { name, version } from '../../package.json';
+// import { name as n, version } from '../../package.json';
 
 export const environment = {
   production: false,
-  name,
+  name: 'Survey Resources',
   version: env.npm_package_version + '-dev',
 
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US'],
-  // STS configuration settings
-  clientId: 'morris-test-client-localhost',
-  redirectUri: window.location.origin,
-  authority: 'https://morrisgisapps.co.morris.nj.us/STS/morris-sts',
-  is4Scopes:
-    'email openid profile morris-developer-profile employee-profile morris_client_api morris_user_api morris_email_api morris_storage_api surveyresource_api',
-  response: 'code',
+     // STS configuration settings
+     stsConfig:{
+      clientId: 'morris-test-client-localhost',
+      redirectUri: window.location.origin,
+      postLogoutRedirectUri: window.location.origin,
+      authority: 'https://morrisgisapps.co.morris.nj.us/STS/morris-sts-dev',
+      scopes: 'email openid profile morris-developer-profile employee-profile morris_client_api morris_user_api morris_email_api morris_storage_api surveyresource_api',
+      authWellknownEndpointUrl: 'https://login.microsoftonline.com/common/v2.0',
+      responseType: 'code',
+      silentRenew: true,
+      maxIdTokenIatOffsetAllowedInSeconds: 600,
+      issValidationOff: true,
+      autoUserInfo: false,
+      // silentRenewUrl: window.location.origin + '/silent-renew.html',
+      useRefreshToken: true
+  },
 
   // API resources
   serverUrl: '',

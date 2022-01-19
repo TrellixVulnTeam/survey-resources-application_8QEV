@@ -3,19 +3,21 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { filter } from 'rxjs/operators';
 import { TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { environment } from '@env/environment';
 import { CoreModule } from '@core';
 //import { SharedModule } from '@shared';
-import { AuthModule } from '@app/auth';
+import { EventTypes, PublicEventsService } from 'angular-auth-oidc-client';
+import { AuthConfigModule } from '@app/auth/auth-config.module';
 // import {AuthModule,OidcConfigService} from 'angular-auth-oidc-client';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthConfigModule } from './auth/auth-config.module';
+
 
 @NgModule({
   imports: [
@@ -31,8 +33,6 @@ import { AuthConfigModule } from './auth/auth-config.module';
     //SharedModule,
     ShellModule,
     HomeModule,
-    AuthModule,
-
     AppRoutingModule,
     AuthConfigModule, // must be imported as the last module as it contains the fallback route
   ],
@@ -40,4 +40,14 @@ import { AuthConfigModule } from './auth/auth-config.module';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private readonly eventService: PublicEventsService) {
+    this.eventService
+      .registerForEvents()
+      .pipe(filter((notification) => notification.type === EventTypes.ConfigLoaded))
+      .subscribe((config) => {
+        console.log('ConfigLoaded', config);
+      });
+  }
+}
+

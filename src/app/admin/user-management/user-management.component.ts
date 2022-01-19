@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Inject } from 
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
-import { AuthService } from '../../auth/authentication.service';
+import { OidcClientNotification, OidcSecurityService, OpenIdConfiguration, UserDataResult } from 'angular-auth-oidc-client';
+
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { COMMA, TAB, SPACE, ENTER, U } from '@angular/cdk/keycodes';
 import { Observable, of } from 'rxjs';
@@ -136,17 +137,26 @@ export class UserManagementComponent implements OnInit {
   constructor(
     private router: Router,
     private _formBuilder: FormBuilder,
-    private authService: AuthService,
+    public oidcSecurityService: OidcSecurityService,
     private morrisUserService: UserService,
     //private spinner: NgxSpinnerService,
     public dialog: MatDialog
   ) {
-    this.authService.userData.subscribe((data) => {
-      this.myProfile = data;
+    
+    this.oidcSecurityService.isAuthenticated$.subscribe(({ isAuthenticated }) => {
+      this.isAuthorized = isAuthenticated;
+
+      console.warn('authenticated: ', isAuthenticated);
     });
-    this.authService.isLoggedIn.subscribe((b) => {
-      this.isAuthorized = b;
-    });
+    this.oidcSecurityService.userData$.subscribe((ud)=>{
+    
+   
+      this.myProfile =  ud.userData;
+
+  });
+    
+    
+
 
     // this.spinner.show();
 

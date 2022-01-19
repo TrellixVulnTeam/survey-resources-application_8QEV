@@ -9,8 +9,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angul
 import { EmailMessage, EmailResponse, EmailTemplate, vwEmailTemplate } from './imessage';
 import { environment } from 'src/environments/environment';
 import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
-import { AuthService, CredentialsService } from '@app/auth';
-
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 @Injectable({
   providedIn: 'root',
 })
@@ -23,13 +22,20 @@ export class EmailTemplateConfigService {
   isAuthorized: boolean = false;
   userData: any = null;
 
-  constructor(private http: HttpClient, private authenticationService: AuthService) {
-    this.authenticationService.userData.subscribe((data) => {
-      this.userData = data;
+  constructor(private http: HttpClient, public oidcSecurityService: OidcSecurityService,) {
+    
+    this.oidcSecurityService.isAuthenticated$.subscribe(({ isAuthenticated }) => {
+      this.isAuthorized = isAuthenticated;
+
+      console.warn('authenticated: ', isAuthenticated);
     });
-    this.authenticationService.isLoggedIn.subscribe((b) => {
-      this.isAuthorized = b;
-    });
+    this.oidcSecurityService.userData$.subscribe((ud)=>{
+    
+      this.userData =  ud.userData;
+      
+
+  });
+    
 
     if (this.isAuthorized) {
       this.getTemplates(this.clientId);

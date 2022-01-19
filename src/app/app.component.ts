@@ -9,6 +9,7 @@ import { environment } from '@env/environment';
 import { Logger } from './@core';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { I18nService } from '@app/i18n';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 const log = new Logger('App');
 
@@ -19,12 +20,18 @@ const log = new Logger('App');
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  public isAuthenticated: boolean = false;
+  public userData:any = {};
+  
+  
   constructor(
+   
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    public oidcSecurityService: OidcSecurityService
   ) {}
 
   ngOnInit() {
@@ -32,8 +39,15 @@ export class AppComponent implements OnInit, OnDestroy {
     if (environment.production) {
       Logger.enableProductionMode();
     }
-
+    
     log.debug('init');
+
+    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData}) =>{
+      this.isAuthenticated = isAuthenticated;
+      this.userData = userData;
+
+
+    })
 
     // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
@@ -60,6 +74,14 @@ export class AppComponent implements OnInit, OnDestroy {
           this.titleService.setTitle(this.translateService.instant(title));
         }
       });
+  }
+
+  login() {
+    this.oidcSecurityService.authorize();
+  }
+
+  logout() {
+    this.oidcSecurityService.logoff();
   }
 
   ngOnDestroy() {

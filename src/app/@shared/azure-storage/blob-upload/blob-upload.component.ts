@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { AuthService } from '../../../auth/authentication.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 //import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute } from '@angular/router';
 import { BlobService } from '../blob.service';
@@ -36,14 +36,14 @@ export class BlobUploadComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private authService: AuthService,
+    public oidcSecurityService: OidcSecurityService,
     private azureStorageService: BlobService,
     // private spinner: NgxSpinnerService,
     public dialog: MatDialog
   ) {
     this.Blobref = data;
-    this.authService.userData.subscribe((res) => {
-      this.email = res.email;
+    this.oidcSecurityService.userData$.subscribe((res) => {
+      this.email = res.userData["email"] || "";
     });
   }
   ngOnInit() {

@@ -34,7 +34,7 @@ export class EmailTemplateFormComponent implements OnInit, OnChanges {
 
   emailTemplate: EmailTemplate = {
     id: null,
-    clientId: environment.clientId,
+    clientId: environment.stsConfig.clientId,
     title: '',
     emailPurpose: '',
     emailDescription: '',
@@ -138,7 +138,7 @@ export class EmailTemplateFormComponent implements OnInit, OnChanges {
   updateFormData() {
     this.emailForm.patchValue({
       id: [this.emailTemplate.id || null],
-      clientId: [this.emailTemplate.clientId || environment.clientId],
+      clientId: [this.emailTemplate.clientId || environment.stsConfig.clientId],
       summary: {
         title: [this.emailTemplate.title] || '',
         emailPurpose: [this.emailTemplate.emailPurpose] || '',

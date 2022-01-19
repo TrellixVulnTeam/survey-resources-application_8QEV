@@ -34,7 +34,7 @@ export class BlobService {
   private _isChrome: boolean = false;
   private _isSafari: boolean = false;
   private _blobListRequest: IBlobListRequest = {
-    containerName: environment.clientId,
+    containerName: environment.stsConfig.clientId,
     prefix: '',
     partialstring: '',
     metadatakey: '',

@@ -6,7 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { AuthService } from '@app/auth/authentication.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { environment } from 'src/environments/environment';
 //import {EmailTemplateCardModule} from '@shared/email/email-template-card/email-template-card.module';
 import { EmailTemplateCardComponent } from '@shared/email/email-template-card/email-template-card.component';
@@ -38,7 +38,7 @@ export class EmailManagementComponent implements OnInit {
   ];
 
   customerName = 'Noah';
-  clientName = environment.clientId;
+  clientName = environment.stsConfig.clientId;
   clientDescription = 'An Angular Starter Project for...';
   emailTemplates: vwEmailTemplate[];
   emailTemplate: EmailTemplate;
@@ -156,6 +156,7 @@ export class EmailManagementComponent implements OnInit {
   returnMessage: EmailResponse = null;
   constructor(
     private activatedroute: ActivatedRoute,
+    public oidcSecurityService: OidcSecurityService,
     private router: Router,
     private emailservice: EmailService,
     private emailtemplateservice: EmailTemplateConfigService,

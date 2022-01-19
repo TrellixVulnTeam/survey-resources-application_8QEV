@@ -22,8 +22,9 @@ import {
   IBlobRef,
   IBlobRenameRequest,
   IBlobFileRequest,
+  IDownloadItem,
 } from '../../@shared/azure-storage/iblob';
-import { AuthService } from '../../auth/authentication.service';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { BlobUploadComponent } from '../../@shared/azure-storage/blob-upload/blob-upload.component';
 //import {EditBlobDlgComponent} from '../edit-blob-dlg/edit-blob-dlg.component';
 //import {DeleteBlobDlgComponent} from '../delete-blob-dlg/delete-blob-dlg.component';
@@ -108,7 +109,7 @@ export class DocumentManagementComponent implements OnInit {
   filelist: IBlobRef[] = [];
   filename: string = '';
   selectedBlob: IBlobRef = null;
-  container: string = 'pres-trust-client';
+  container: string = 'morris-test-client-localhost';
   blobUrl: string = '';
   selectedFile: IBlobRef = null;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA, ENTER];
@@ -132,13 +133,13 @@ export class DocumentManagementComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private authService: AuthService,
+    public oidcSecurityService: OidcSecurityService,
     private azureStorageService: BlobService,
     // private spinner: NgxSpinnerService,
     public dialog: MatDialog //  public toastr: ToastrService,  // Toastr service for alert message
   ) {
-    this.authService.userData.subscribe((res) => {
-      this.email = res.email;
+    this.oidcSecurityService.userData$.subscribe((ud) => {
+      this.email = ud.userData["email"] || "";
     });
   }
 
@@ -148,7 +149,7 @@ export class DocumentManagementComponent implements OnInit {
 
   getBlobList() {
     let req: IBlobListRequest = {
-      containerName: 'pres-trust-client',
+      containerName: this.container,
       prefix: '',
       partialstring: '',
       metadatakey: '',
@@ -182,6 +183,14 @@ export class DocumentManagementComponent implements OnInit {
 
     this.azureStorageService.downloadFileII(blobrequest);
     // .subscribe(results => this.contents = results);
+  }
+
+  testDownloadFiles() {
+    let files: IDownloadItem[] = [
+      { fileName: '', title: '' },
+      { fileName: '', title: '' },
+    ];
+    alert(JSON.stringify(files));
   }
 
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import { AuthenticationGuard } from '@app/auth';
+import { AuthenticationGuard } from '@app/auth/authentication.guard';
 import { AdminComponent } from './admin/admin.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { LkpTableManagementComponent } from './lkp-table-management/lkp-table-management.component';
