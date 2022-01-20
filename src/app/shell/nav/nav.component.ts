@@ -27,7 +27,7 @@ export class NavComponent implements OnInit {
     {
       label: 'MAPS',
       icon: 'explore',
-      route: ['/maps'],
+      route: ['/map'],
     },
     {
       label: 'ADMIN',

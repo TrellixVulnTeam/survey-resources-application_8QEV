@@ -51,11 +51,6 @@ const mapConfig = {
     EsriMapModule,
   ],
   declarations: [HomeComponent],
-  providers: [
-    {
-      provide: ESRI_MAP_CONFIG,
-      useValue: mapConfig,
-    },
-  ],
+  providers: [  ],
 })
 export class HomeModule {}
