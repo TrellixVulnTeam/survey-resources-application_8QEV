@@ -51,8 +51,6 @@ export class ShellComponent implements OnInit {
 
   ngOnInit() {}
 
-
-
   get isMobile(): boolean {
     return this.media.isActive('xs') || this.media.isActive('sm');
   }

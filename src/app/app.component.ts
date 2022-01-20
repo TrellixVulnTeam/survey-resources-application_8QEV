@@ -21,11 +21,9 @@ const log = new Logger('App');
 })
 export class AppComponent implements OnInit, OnDestroy {
   public isAuthenticated: boolean = false;
-  public userData:any = {};
-  
-  
+  public userData: any = {};
+
   constructor(
-   
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
@@ -39,15 +37,13 @@ export class AppComponent implements OnInit, OnDestroy {
     if (environment.production) {
       Logger.enableProductionMode();
     }
-    
+
     log.debug('init');
 
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData}) =>{
+    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData }) => {
       this.isAuthenticated = isAuthenticated;
       this.userData = userData;
-
-
-    })
+    });
 
     // Setup translations
     this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);

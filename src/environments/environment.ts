@@ -18,21 +18,22 @@ export const environment = {
 
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US'],
-     // STS configuration settings
-     stsConfig:{
-      clientId: 'morris-test-client-localhost',
-      redirectUri: window.location.origin,
-      postLogoutRedirectUri: window.location.origin,
-      authority: 'https://morrisgisapps.co.morris.nj.us/STS/morris-sts-dev',
-      scopes: 'email openid profile morris-developer-profile employee-profile morris_client_api morris_user_api morris_email_api morris_storage_api surveyresource_api',
-      authWellknownEndpointUrl: 'https://login.microsoftonline.com/common/v2.0',
-      responseType: 'code',
-      silentRenew: true,
-      maxIdTokenIatOffsetAllowedInSeconds: 600,
-      issValidationOff: true,
-      autoUserInfo: false,
-      // silentRenewUrl: window.location.origin + '/silent-renew.html',
-      useRefreshToken: true
+  // STS configuration settings
+  stsConfig: {
+    clientId: 'morris-test-client-localhost',
+    redirectUri: window.location.origin,
+    postLogoutRedirectUri: window.location.origin,
+    authority: 'https://morrisgisapps.co.morris.nj.us/STS/morris-sts-dev',
+    scopes:
+      'email openid profile morris-developer-profile employee-profile morris_client_api morris_user_api morris_email_api morris_storage_api surveyresource_api',
+    authWellknownEndpointUrl: 'https://login.microsoftonline.com/common/v2.0',
+    responseType: 'code',
+    silentRenew: true,
+    maxIdTokenIatOffsetAllowedInSeconds: 600,
+    issValidationOff: true,
+    autoUserInfo: false,
+    // silentRenewUrl: window.location.origin + '/silent-renew.html',
+    useRefreshToken: true,
   },
 
   // API resources

@@ -7,7 +7,7 @@ import { MaterialModule } from '@app/material.module';
 import { LoaderComponent } from './loader/loader.component';
 //import { EsriMapComponent } from './esri-map/esri-map.component';
 //import { EmailMessageComponent } from './email/email-message/email-message.component';
- import { BlobUploadComponent } from './azure-storage/blob-upload/blob-upload.component';
+import { BlobUploadComponent } from './azure-storage/blob-upload/blob-upload.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
 import { DataContainerComponent } from './data-container/data-container.component';
 import { DataFilterComponent } from './data-filter/data-filter.component';
@@ -24,7 +24,7 @@ import { DataResultsComponent } from './data-results/data-results.component';
     LoaderComponent,
     //EsriMapComponent,
     //  EmailMessageComponent,
-     BlobUploadComponent,
+    BlobUploadComponent,
     SearchInputComponent,
     DataContainerComponent,
     DataFilterComponent,
@@ -40,7 +40,7 @@ import { DataResultsComponent } from './data-results/data-results.component';
     LoaderComponent,
     //EsriMapComponent,
     // EmailMessageComponent,
-     BlobUploadComponent,
+    BlobUploadComponent,
     //  EmailTemplateCardComponent,
     //  EmailTemplateFormComponent,
     DataContainerComponent,

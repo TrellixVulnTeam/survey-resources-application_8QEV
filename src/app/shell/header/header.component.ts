@@ -3,7 +3,12 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { MediaObserver } from '@angular/flex-layout';
 
-import { OidcClientNotification, OidcSecurityService, OpenIdConfiguration, UserDataResult } from 'angular-auth-oidc-client';
+import {
+  OidcClientNotification,
+  OidcSecurityService,
+  OpenIdConfiguration,
+  UserDataResult,
+} from 'angular-auth-oidc-client';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-header',
@@ -13,11 +18,11 @@ import { Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   configuration$: OpenIdConfiguration;
   // userDataChanged$: Observable<OidcClientNotification<any>>;
-   userData$: Observable<UserDataResult>;
-   isAuthenticated = false;
-   email$:string = "";
-   userName$:string = "";
-  
+  userData$: Observable<UserDataResult>;
+  isAuthenticated = false;
+  email$: string = '';
+  userName$: string = '';
+
   constructor(
     public oidcSecurityService: OidcSecurityService,
     private router: Router,
@@ -31,13 +36,11 @@ export class HeaderComponent implements OnInit {
       console.warn('authenticated: ', isAuthenticated);
     });
     this.userData$ = this.oidcSecurityService.userData$;
-    
-    this.userData$.subscribe((ud)=>{
-    
-      this.email$ =  ud.userData["email"] || "";
-      this.userName$ =  ud.userData["userName"] || "";
 
-  });
+    this.userData$.subscribe((ud) => {
+      this.email$ = ud.userData['email'] || '';
+      this.userName$ = ud.userData['userName'] || '';
+    });
   }
 
   ngOnInit(): void {}
@@ -65,7 +68,6 @@ export class HeaderComponent implements OnInit {
   revokeAccessToken() {
     this.oidcSecurityService.revokeAccessToken().subscribe((result) => console.log(result));
   }
-
 
   get isMobile(): boolean {
     return this.media.isActive('xs') || this.media.isActive('sm');

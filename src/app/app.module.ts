@@ -18,7 +18,6 @@ import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,4 +49,3 @@ export class AppModule {
       });
   }
 }
-

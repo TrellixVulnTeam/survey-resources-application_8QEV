@@ -22,20 +22,15 @@ export class EmailTemplateConfigService {
   isAuthorized: boolean = false;
   userData: any = null;
 
-  constructor(private http: HttpClient, public oidcSecurityService: OidcSecurityService,) {
-    
+  constructor(private http: HttpClient, public oidcSecurityService: OidcSecurityService) {
     this.oidcSecurityService.isAuthenticated$.subscribe(({ isAuthenticated }) => {
       this.isAuthorized = isAuthenticated;
 
       console.warn('authenticated: ', isAuthenticated);
     });
-    this.oidcSecurityService.userData$.subscribe((ud)=>{
-    
-      this.userData =  ud.userData;
-      
-
-  });
-    
+    this.oidcSecurityService.userData$.subscribe((ud) => {
+      this.userData = ud.userData;
+    });
 
     if (this.isAuthorized) {
       this.getTemplates(this.clientId);

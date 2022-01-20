@@ -3,7 +3,6 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { MediaObserver } from '@angular/flex-layout';
 
-
 import { TabItem } from '@app/@core/data/models/tab-item';
 
 @Component({
@@ -49,8 +48,6 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-
- 
 
   get isMobile(): boolean {
     return this.media.isActive('xs') || this.media.isActive('sm');

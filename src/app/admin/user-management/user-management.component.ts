@@ -2,7 +2,12 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Inject } from 
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
-import { OidcClientNotification, OidcSecurityService, OpenIdConfiguration, UserDataResult } from 'angular-auth-oidc-client';
+import {
+  OidcClientNotification,
+  OidcSecurityService,
+  OpenIdConfiguration,
+  UserDataResult,
+} from 'angular-auth-oidc-client';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { COMMA, TAB, SPACE, ENTER, U } from '@angular/cdk/keycodes';
@@ -142,21 +147,14 @@ export class UserManagementComponent implements OnInit {
     //private spinner: NgxSpinnerService,
     public dialog: MatDialog
   ) {
-    
     this.oidcSecurityService.isAuthenticated$.subscribe(({ isAuthenticated }) => {
       this.isAuthorized = isAuthenticated;
 
       console.warn('authenticated: ', isAuthenticated);
     });
-    this.oidcSecurityService.userData$.subscribe((ud)=>{
-    
-   
-      this.myProfile =  ud.userData;
-
-  });
-    
-    
-
+    this.oidcSecurityService.userData$.subscribe((ud) => {
+      this.myProfile = ud.userData;
+    });
 
     // this.spinner.show();
 

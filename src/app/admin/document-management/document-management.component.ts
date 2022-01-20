@@ -139,7 +139,7 @@ export class DocumentManagementComponent implements OnInit {
     public dialog: MatDialog //  public toastr: ToastrService,  // Toastr service for alert message
   ) {
     this.oidcSecurityService.userData$.subscribe((ud) => {
-      this.email = ud.userData["email"] || "";
+      this.email = ud.userData['email'] || '';
     });
   }
 

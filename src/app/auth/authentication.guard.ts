@@ -3,7 +3,6 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { Logger } from '@core';
 
-
 const log = new Logger('AuthenticationGuard');
 
 @Injectable({
@@ -13,7 +12,7 @@ export class AuthenticationGuard implements CanActivate {
   isAuthenticated: boolean;
   constructor(
     private router: Router,
-  
+
     public oidcSecurityService: OidcSecurityService
   ) {
     this.oidcSecurityService.isAuthenticated$.subscribe((b) => {

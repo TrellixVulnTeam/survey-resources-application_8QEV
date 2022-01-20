@@ -12,7 +12,15 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, FlexLayoutModule, MaterialModule, AuthConfigModule, I18nModule, RouterModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    FlexLayoutModule,
+    MaterialModule,
+    AuthConfigModule,
+    I18nModule,
+    RouterModule,
+  ],
   declarations: [ShellComponent, HeaderComponent, NavComponent],
 })
 export class ShellModule {}

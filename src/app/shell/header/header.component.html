@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="navbar-nav ml-auto">
-         <div class="nav-item" ngbDropdown>
+        <div class="nav-item" ngbDropdown>
           <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
             <i class="fas fa-user-circle"></i>
           </a>
@@ -27,10 +27,10 @@
               <button (click)="revokeAccessToken()">Revoke access token</button>
               <button (click)="revokeRefreshToken()">Revoke refresh token</button>
               <button (click)="refreshSession()">Refresh session</button> -->
-              Welcome:<pre>{{ email$ }}</pre>
-               
+              Welcome:
+              <pre>{{ email$ }}</pre>
             </div>
-          
+
             <ng-template #noAuth>
               <button (click)="login()">Login</button>
               <hr />

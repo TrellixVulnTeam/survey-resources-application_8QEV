@@ -15,7 +15,7 @@ import { environment } from '@env/environment';
         // autoUserInfo: true,
         silentRenew: environment.stsConfig.silentRenew,
         useRefreshToken: environment.stsConfig.useRefreshToken,
-        logLevel: LogLevel.Debug
+        logLevel: LogLevel.Debug,
       },
     }),
   ],

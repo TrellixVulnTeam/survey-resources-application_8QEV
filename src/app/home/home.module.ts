@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -40,9 +40,16 @@ const mapConfig = {
   ],
 };
 
-
 @NgModule({
-  imports: [CommonModule, TranslateModule, SharedModule, FlexLayoutModule, MaterialModule, HomeRoutingModule, EsriMapModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    SharedModule,
+    FlexLayoutModule,
+    MaterialModule,
+    HomeRoutingModule,
+    EsriMapModule,
+  ],
   declarations: [HomeComponent],
   providers: [
     {

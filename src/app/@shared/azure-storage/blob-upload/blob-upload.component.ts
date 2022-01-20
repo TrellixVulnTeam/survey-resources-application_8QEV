@@ -43,7 +43,7 @@ export class BlobUploadComponent implements OnInit {
   ) {
     this.Blobref = data;
     this.oidcSecurityService.userData$.subscribe((res) => {
-      this.email = res.userData["email"] || "";
+      this.email = res.userData['email'] || '';
     });
   }
   ngOnInit() {
