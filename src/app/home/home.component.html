@@ -7,8 +7,17 @@
       <mat-card-title translate>Hello world !</mat-card-title>
       <mat-card-subtitle>
         <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
-        <q [hidden]="isLoading">{{ quote }}</q>
+       
       </mat-card-subtitle>
     </mat-card-content>
   </mat-card>
+  <morrislib-esri-map
+  [searchLayerUrl]="'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/Surveys/SurveyResources/MapServer/8'"
+  [searchField]="'SurveyID'"
+  [selectedList]="[112847]"
+  [parcelList]="[]"
+  [width]="'760px'"
+  [height]="'300px'"
+  [widgets]="['basemaptoggle']"
+></morrislib-esri-map>
 </div>
