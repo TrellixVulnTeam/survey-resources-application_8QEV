@@ -1,0 +1,132 @@
+/* Cards
+            --------------------------------------------- */
+
+section.card-group {
+  font-size: calc(0.9rem + 0.5vw);
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0px;
+  -ms-grid-columns: 1fr;
+  -ms-grid-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+li.li-card {
+  width: calc(100% - 10px);
+  display: -ms-grid;
+  -ms-grid-columns: 1fr;
+  -ms-grid-rows: 1fr;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  background-color: #f7f4f4;
+  color: #6e7f80;
+  margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+li.li-card:hover {
+  background-color: #d6c296;
+}
+li.li-card.selected {
+  background-color: #93edf3;
+}
+
+.card-record {
+  color: whitesmoke;
+  background: rgb(133, 18, 18);
+  text-shadow: 0 0 2px black;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img-card {
+  border-radius: 5px 5px 0 0;
+}
+.card-thumb {
+  z-index: 1;
+  opacity: 0.2;
+  // background-image: url("../../../assets/favicon-16x16.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: contain;
+  margin: 1rem;
+}
+
+div.card-header {
+  width: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 0px 6fr 0px 2fr;
+  -ms-grid-rows: 1fr;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+div.card-detail {
+  width: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 5px 1fr;
+  -ms-grid-rows: 1fr;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.underline {
+  display: inline-block;
+  text-decoration: underline;
+  color: #506364e7;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.card-label {
+  display: inline-block;
+  color: #506364e7;
+  font-size: calc(0.6rem + 0.25vw);
+  margin: 0 5px;
+  height: 1em;
+}
+.card-headline {
+  display: inline-block;
+  font-size: calc(1.25rem + 0.25vw);
+  color: #741313;
+  font-weight: 700;
+  margin: 0px;
+  height: 1.2em;
+  line-height: 1.1rem;
+}
+.card-attr {
+  clear: both;
+  font-size: calc(0.55rem + 0.25vw);
+  color: #536872;
+  font-weight: 700;
+  margin: 0 5px;
+  height: 1em;
+  line-height: 1rem;
+}
+.j-left {
+  display: inline-block;
+  text-align: left;
+  text-justify: left;
+}
+
+.j-center {
+  display: inline-block;
+  text-justify: center;
+  text-align: center;
+}

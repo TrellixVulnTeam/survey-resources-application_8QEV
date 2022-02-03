@@ -1,0 +1,65 @@
+<!-- <mat-card *ngFor="let row of data; let i = index" [attr.data-index]="i"[ngClass]="{ 'card-selected mat-elevation-z4': selected }" (click)="selectRecord(row.PAMS_PIN)">
+    <!-- <span *ngIf="selected" [matTooltip]="selected ? 'select' : 'unselect'" class="selection">
+      <mat-icon>check_circle</mat-icon>
+    </span> -->
+<!-- <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title> <span class="material-icons"> mail </span>{{ row.PAMS_PIN }}</mat-card-title>
+      <mat-card-subtitle>{{ row.Oid }}</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <p>
+        {{ row.Zoning }}
+      </p>
+    </mat-card-content> -->
+<!-- <mat-card-actions>
+      <button><a [routerLink]="['/admin/email', vtemplate.id, 'preview']">PREVIEW</a></button>
+      <button><a [routerLink]="['/admin/email', vtemplate.id, 'edit']">VIEW/EDIT</a></button>
+    </mat-card-actions> -->
+<!-- </mat-card> -->
+-->
+
+<ul id="master-card" class="ul-cards" multiple>
+  <li
+    [ngClass]="{ 'li-card card-selected mat-elevation-z4': selected }"
+    *ngFor="let row of data; let i = index"
+    [attr.data-index]="i"
+    :key="p.PAMS_PIN"
+    :id="p.taxmaster.PAMS_PIN"
+    :position="p.ddd"
+  >
+    <div class="card-header">
+      <div class="card-record">{{ i + 1 }}</div>
+      <div class="card-title j-center">
+        <h2 class="card-headline j-center">{{ row.PAMS_PIN }}</h2>
+        <a [routerLink]="['/tax-records/', row.PAMS_PIN, view]">{{ row.PAMS_PIN }} </a>
+        <br />
+        <p class="card-attr j-center">
+          <span class="card-label">Block:</span>{{ row.Block }}, <span class="card-label">Lot:</span>{{ row.Lot }}
+        </p>
+        <br />
+        <p class="card-attr j-center">{{ row.PropertyLocation + ', ' + 'row.Municipality' }}</p>
+      </div>
+      <div class="card-thumb"></div>
+    </div>
+    <div class="card-detail">
+      <div class="resItemLeft">
+        <p class="card-attr j-left"><label class="card-label underline">Property Owner</label></p>
+        <br />
+        <p class="card-attr j-left">{{ row.OwnersName }}</p>
+        <br />
+        <p class="card-attr j-left">
+          <label class="card-label">Deed: </label>{{ row.DeedBookNumber + '/' + row.DeedBookPage }}
+        </p>
+      </div>
+      <div class="resItemRight">
+        <p class="card-attr j-left"><label class="card-label">Lot Acres:</label>{{ row.CalculatedAcreage }}</p>
+        <br />
+        <p class="card-attr j-left"><label class="card-label">Land Use:</label>{{ row.PropertyClassCode }}</p>
+        <br />
+        <p class="card-attr j-left"><label class="card-label">Zone:</label>{{ row.Zoning }}</p>
+      </div>
+    </div>
+  </li>
+</ul>

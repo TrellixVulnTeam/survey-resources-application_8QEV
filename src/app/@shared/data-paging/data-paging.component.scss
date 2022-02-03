@@ -1,0 +1,54 @@
+.DataPaging {
+  background: palegoldenrod;
+  align-items: center;
+  justify-content: center;
+}
+.pagenumber {
+  width: 40px;
+  justify-content: center;
+}
+.inline {
+  display: inline;
+  height: 30;
+  margin: 0;
+  padding: 0;
+}
+.example {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 50px;
+}
+
+.but-circle {
+  fill: #425c3c;
+}
+.but-icon {
+  fill: #fff;
+}
+
+.but-circle:hover {
+  fill: rgb(0, 0, 0);
+  background: #610a0a;
+  cursor: pointer;
+  -ms-transform: scale(120%);
+  -webkit-transform: scale(120%);
+  transform: scale(120%);
+}
+
+.forward {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+svg {
+  padding: 5px 5px;
+}
+
+.paging-navigation:hover {
+  cursor: pointer;
+}

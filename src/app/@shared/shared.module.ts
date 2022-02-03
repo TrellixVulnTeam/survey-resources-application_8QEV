@@ -13,6 +13,9 @@ import { DataContainerComponent } from './data-container/data-container.componen
 import { DataFilterComponent } from './data-filter/data-filter.component';
 import { DataBreadcrumbsComponent } from './data-breadcrumbs/data-breadcrumbs.component';
 import { DataResultsComponent } from './data-results/data-results.component';
+import { DataPagingComponent } from './data-paging/data-paging.component';
+import { DataCardComponent } from './data-card/data-card.component';
+import { DataSurveyResourceCardComponent } from './data-survey-resource-card/data-survey-resource-card.component';
 
 //import { EmailTemplateCardComponent } from './email/email-template-card/email-template-card.component';
 //import { EmailTemplateFormComponent } from './email/email-template-form/email-template-form.component';
@@ -30,6 +33,9 @@ import { DataResultsComponent } from './data-results/data-results.component';
     DataFilterComponent,
     DataBreadcrumbsComponent,
     DataResultsComponent,
+    DataPagingComponent,
+    DataCardComponent,
+    DataSurveyResourceCardComponent,
 
     // EmailTemplateCardComponent,
     //  EmailTemplateFormComponent,
