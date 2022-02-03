@@ -5,13 +5,8 @@ import { TestRoutingModule } from './test-routing.module';
 import { TestComponent } from './test.component';
 import { SharedModule } from '@app/@shared';
 
-
 @NgModule({
   declarations: [TestComponent],
-  imports: [
-    CommonModule,
-    TestRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, TestRoutingModule, SharedModule],
 })
-export class TestModule { }
+export class TestModule {}
