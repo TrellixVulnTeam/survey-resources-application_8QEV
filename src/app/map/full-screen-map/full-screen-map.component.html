@@ -1,6 +1,8 @@
 <!-- <app-esri-map></app-esri-map> -->
 <morrislib-esri-map
-  [searchLayerUrl]="'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelsWGS84_10dot5/MapServer/0'"
+  [searchTargetName]="
+    'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelsWGS84_10dot5/MapServer/0'
+  "
   [searchField]="'PAMS_PIN'"
   [selectedList]="['1401_1_1', '1401_1_10']"
   [width]="'100%'"

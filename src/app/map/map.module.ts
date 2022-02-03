@@ -9,33 +9,15 @@ import { EsriMapModule, ESRI_MAP_CONFIG } from 'esri-map';
 const mapConfig = {
   mapServiceUrl:
     'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelSearcher_Dynamic/MapServer',
-    nearmapKey:'MWFkNGYyOWYtN2JkNS00ZWIzLWFlNDctNTdiODU5ZWE0ZGM0',
-    wkid:102100,
-    parcelLayerUrl:'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelsWGS84_10dot5/MapServer/0',
+  nearmapKey: 'MWFkNGYyOWYtN2JkNS00ZWIzLWFlNDctNTdiODU5ZWE0ZGM0',
+  wkid: 102100,
+  parcelLayerUrl:
+    'https://morrisgisapps.co.morris.nj.us/arcgis105/rest/services/ParcelSearcher/ParcelsWGS84_10dot5/MapServer/0',
   baseMaps: ['topo-vector', 'hybrid'],
   sublayerConfig: [
-    {
-      id: 4,
-      title: 'Recent Sales',
-      visible: true,
-      legendEnabled: true,
-      listMode: 'show',
-    },
-    {
-      id: 7,
-      title: 'Parcels',
-      visible: true,
-      legendEnabled: true,
-      listMode: 'show',
-    },
-
-    {
-      id: 14,
-      title: 'Municipalities',
-      visible: true,
-      legendEnabled: false,
-      listMode: 'hide',
-    },
+    { id: 4, title: 'Recent Sales', visible: true, legendEnabled: true, listMode: 'show' },
+    { id: 7, title: 'Parcels', visible: true, legendEnabled: true, listMode: 'show' },
+    { id: 14, title: 'Municipalities', visible: true, legendEnabled: false, listMode: 'hide' },
   ],
 };
 
