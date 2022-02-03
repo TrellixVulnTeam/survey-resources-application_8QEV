@@ -6,7 +6,7 @@ export interface ISurveyResourcesCard {
   SurveyTitle: string;
   PresentName: string;
   AliasNames: string;
-  SurveyDate: Date;
+  SurveyDate: string;
   // primaryMuniID: number;
   // SurveySiteGeneralAddress: string;
   // SurveyDescription: string;
@@ -44,7 +44,7 @@ export class SurveyResourcesCard implements ISurveyResourcesCard {
     public SurveyTitle: string,
     public PresentName: string,
     public AliasNames: string,
-    public SurveyDate: Date
+    public SurveyDate: string
   ) {}
 }
 
